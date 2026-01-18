@@ -24,7 +24,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
+        {/* //absolute to fixed */}
+        <div className="fixed inset-0 top-0 z-[-1] min-h-screen"> 
           <Aurora
             colorStops={["#2054ff", "#b51fe0", "#3910f2"]}
             blend={0.5}
