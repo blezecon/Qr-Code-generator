@@ -2,6 +2,15 @@
 
 A modern, open-source, web-based tool for generating customizable QR codes. Cookie QR focuses on simplicity, performance, and clean UI, allowing users to generate and export QR codes quickly without unnecessary complexity or friction.
 
+## Preview
+<p>
+  <img
+    src="https://i.postimg.cc/9fY20Jh6/Screenshot-20260119-203251.png"
+    alt="Cookie QR Workspace"
+    width="720"
+  />
+</p>
+
 ## Features
 
 - **QR Code Generation** – Generate QR codes from any text or URL using the goQR public API
@@ -13,13 +22,6 @@ A modern, open-source, web-based tool for generating customizable QR codes. Cook
 - **Open-Source** – MIT License; free to use, modify, and distribute
 - **Hosting-Ready** – Works seamlessly in production and hosted environments without additional configuration
 
-<p align="center">
-  <img
-    src="https://i.ibb.co/TBzpqfKb/Screenshot-20260119-203251.png"
-    alt="Cookie QR Workspace"
-    width="720"
-  />
-</p>
 
 ## Tech Stack
 
