@@ -1,50 +1,102 @@
+import { Code, Layers, Palette, Zap, Info } from "lucide-react";
+
 const AboutPage = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center">
-  <div className="wrapper px-6 sm:px-12 max-w-4xl mx-auto">
-    <div className="text-center">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-        About Me
-      </h1>
+    <section className="min-h-screen flex justify-center items-start pt-24">
+      <div className="wrapper px-12 ">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              About
+            </h1>
+          </div>
 
-      <p className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed">
-        I&apos;m Blezecon, a developer focused on building clean, fast, and practical
-        web tools. I enjoy working on projects that solve simple problems
-        efficiently—without unnecessary complexity, tracking, or lock-in.
-      </p>
-    </div>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            QR Workspace is a modern, web-based tool for generating customizable
+            QR codes. It focuses on simplicity, performance, and clean UI,
+            allowing users to generate and export QR codes quickly without
+            unnecessary complexity.
+          </p>
+        </div>
 
-    <div className="space-y-8 text-muted-foreground text-base sm:text-lg leading-relaxed">
-      <p>
-        This QR Code Generator is an open-source project built with simplicity
-        and usability in mind. It allows anyone to create, scan, and share QR
-        codes instantly, directly from the browser—no accounts, no ads, and no
-        hidden limitations.
-      </p>
+        {/* About the Website */}
+        <div className="mb-12 space-y-4">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
+            <Zap className="h-5 w-5 text-muted-foreground" />
+            What is QR Workspace?
+          </h2>
 
-      <p>
-        My main interests lie in modern frontend development, performance-aware
-        UI design, and developer-friendly tooling. I enjoy working with
-        technologies like Next.js, React, and open-source libraries to build
-        products that feel lightweight and intentional.
-      </p>
+          <p className="text-muted-foreground leading-relaxed">
+            QR Workspace is designed as a lightweight QR code generator where
+            users can control content, resolution, foreground and background
+            colors, and export the result in PNG or SVG formats. The goal is to
+            provide a fast and distraction-free experience with a polished,
+            dashboard-style interface.
+          </p>
 
-      <p>
-        I believe good software should be easy to use, respectful of user
-        privacy, and accessible to everyone. Most of my projects follow this
-        philosophy: minimal UI, clear functionality, and transparent code.
-      </p>
+          <p className="text-muted-foreground leading-relaxed">
+            The project emphasizes good UI structure, predictable state
+            management, and a clean separation of concerns, making it both
+            user-friendly and developer-friendly.
+          </p>
+        </div>
 
-      <p>
-        This project is actively maintained and open for exploration. If you&apos;re
-        interested in how it&apos;s built, contributions, or improvements, feel free
-        to check out the source code on GitHub.
-      </p>
-    </div>
-  </div>
-</section>
+        {/* Tools Used */}
+        <div className="space-y-6">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
+            <Layers className="h-5 w-5 text-muted-foreground" />
+            Tools & Technologies Used
+          </h2>
 
-  )
-}
+          <ul className="space-y-4 text-muted-foreground">
+            <li className="flex items-start gap-3">
+              <Code className="h-5 w-5 mt-1" />
+              <span>
+                <strong>Next.js</strong> — Used as the core framework for routing,
+                rendering, and overall application structure, enabling a modern
+                React-based architecture.
+              </span>
+            </li>
 
-export default AboutPage
+            <li className="flex items-start gap-3">
+              <Palette className="h-5 w-5 mt-1" />
+              <span>
+                <strong>Tailwind CSS</strong> — Provides utility-first styling,
+                allowing rapid UI development with consistent spacing,
+                typography, and responsive design.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <Layers className="h-5 w-5 mt-1" />
+              <span>
+                <strong>shadcn/ui</strong> — Used for reusable, accessible UI
+                primitives such as buttons and form elements, built on top of
+                Tailwind CSS.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <Zap className="h-5 w-5 mt-1" />
+              <span>
+                <strong>lucide-react</strong> — Supplies a clean, consistent icon
+                set that integrates seamlessly with the design system.
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <Zap className="h-5 w-5 mt-1" />
+              <span>
+                <strong>Lenis</strong> — Adds smooth scrolling behavior for a
+                more refined and fluid user experience across the application.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutPage;

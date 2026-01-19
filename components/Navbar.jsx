@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Banana, Home, Compass } from "lucide-react";
+import { Banana, Home, Compass, BadgeInfo } from "lucide-react";
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-gray-200 backdrop-blur supports-backdrop-filter:bg-black/20 text-foreground">
@@ -25,11 +25,14 @@ const Navbar = () => {
               <Compass className="size-4" />
               <span>WorkSpace</span>
             </Link>
+            <Link
+              href="/workspace"
+              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors hover:bg-muted/50"
+            >
+              <BadgeInfo className="size-4" />
+              <span>About</span>
+            </Link>
           </nav>
-
-          {/* <div className="flex items-center gap-3">
-            
-          </div> */}
         </div>
       </div>
     </header>

@@ -6,18 +6,17 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-start justify-center overflow-hidden">
       {/* Top offset to account for navbar + visual balance */}
-      <div className="wrapper w-full pt-32 sm:pt-36 lg:pt-40 px-6 sm:px-12">
+      <div className="wrapper w-full pt-32 sm:pt-36 lg:pt-40 px-12">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
             Hi, I&apos;m Blezecon.
-            <br className="hidden sm:block" />
-            I Build Simple, Useful Tools
+            <br className="hidden sm:block" />I Build Simple, Useful Tools
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
             This QR Code Generator is a lightweight, privacy-friendly project
-            built to create, scan, and share QR codes instantly. No accounts,
-            no tracking, no unnecessary complexity—just fast tools that work
+            built to create, scan, and share QR codes instantly. No accounts, no
+            tracking, no unnecessary complexity—just fast tools that work
             directly in your browser.
           </p>
 
@@ -25,7 +24,7 @@ const Hero = () => {
             <Button asChild size="lg" className="px-8 text-base shadow-lg">
               <Link href="/submit">
                 <Compass className="size-5" />
-                Open Workspace
+                Workspace
               </Link>
             </Button>
 
