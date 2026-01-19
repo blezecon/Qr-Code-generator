@@ -12,6 +12,15 @@ A modern, open-source, web-based tool for generating customizable QR codes. Cook
 - **Privacy-Friendly** – No user accounts, no tracking, no data collection
 - **Open-Source** – MIT License; free to use, modify, and distribute
 - **Hosting-Ready** – Works seamlessly in production and hosted environments without additional configuration
+
+<p align="center">
+  <img
+    src="https://i.ibb.co/TBzpqfKb/Screenshot-20260119-203251.png"
+    alt="Cookie QR Workspace"
+    width="720"
+  />
+</p>
+
 ## Tech Stack
 
 - **[Next.js](https://nextjs.org/)** – React framework with App Router for building the web application
