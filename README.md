@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cookie QR
+
+A modern, open-source, web-based tool for generating customizable QR codes. Cookie QR focuses on simplicity, performance, and clean UI, allowing users to generate and export QR codes quickly without unnecessary complexity or friction.
+
+## Features
+
+- **QR Code Generation** – Generate QR codes from any text or URL using the goQR public API
+- **Color Customization** – Customize foreground and background colors with an intuitive color picker
+- **Size Selection** – Choose from multiple QR code sizes (128×128, 256×256, 512×512, and more)
+- **Multiple Export Formats** – Download QR codes as PNG or SVG
+- **Client-Side Processing** – All interactions happen in your browser; no server uploads
+- **Privacy-Friendly** – No user accounts, no tracking, no data collection
+- **Open-Source** – MIT License; free to use, modify, and distribute
+
+## Tech Stack
+
+- **[Next.js](https://nextjs.org/)** – React framework with App Router for building the web application
+- **[React](https://react.dev/)** – UI library for building interactive components
+- **[Tailwind CSS](https://tailwindcss.com/)** – Utility-first CSS framework for styling
+- **[shadcn/ui](https://ui.shadcn.com/)** – High-quality, accessible React components
+- **[React Bits](https://reactbits.dev/)** – Good, Unique, accessible React components
+- **[lucide-react](https://lucide.dev/)** – Beautiful, consistent icon library
+- **[Lenis](https://lenis.studiofreight.com/)** – Smooth scrolling experience
+- **[react-colorful](https://omgovich.github.io/react-colorful/)** – Lightweight, accessible color picker
+
+## QR Code Generation
+
+Cookie QR uses the **[goQR public API](https://goqr.me/api/)** to generate QR codes. The API endpoint accepts your input parameters and returns a QR code image in your requested format.
+
+**Supported Formats:**
+- PNG (raster image)
+- SVG (vector image)
+
+**Privacy & Data:**
+- The project does not store any user data
+- QR code generation requests are made directly to the goQR API
+- No tracking or analytics are collected
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- **Node.js** (LTS version recommended)
+- **npm**, **pnpm**, or **yarn** package manager
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/cookie-qr.git
+   cd cookie-qr
+   ```
+
+2. Install dependencies:
+   ```bash
+   pnpm install
+   # or: npm install / yarn install
+   ```
+
+### Running Locally
+
+Start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
+# or: npm run dev / yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application will automatically reload as you make changes.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+cookie-qr/
+├── app/
+│   ├── globals.css           # Global styles
+│   ├── layout.jsx            # Root layout
+│   ├── layout-client.jsx     # Client-side layout
+│   └── page.jsx              # Home page
+├── components/
+│   ├── AboutPage.jsx         # About section
+│   ├── Aurora.jsx            # Aurora background component
+│   ├── Footer.jsx            # Footer component
+│   ├── Hero.jsx              # Hero section
+│   ├── Navbar.jsx            # Navigation bar
+│   ├── WorkSpace.jsx         # Main QR generator interface
+│   └── ui/
+│       ├── button.jsx        # Button component (shadcn/ui)
+│       └── colorPicker.jsx   # Color picker component
+├── lib/
+│   ├── useLenis.js           # Lenis smooth scrolling hook
+│   └── utils.js              # Utility functions
+├── public/                    # Static assets
+├── package.json              # Dependencies and scripts
+├── next.config.mjs           # Next.js configuration
+├── tailwind.config.js        # Tailwind CSS configuration
+├── postcss.config.mjs        # PostCSS configuration
+└── README.md                 # This file
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
