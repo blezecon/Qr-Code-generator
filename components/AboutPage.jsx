@@ -2,7 +2,10 @@ import { Code, Layers, Palette, Zap, Info } from "lucide-react";
 
 const AboutPage = () => {
   return (
-    <section id="about" className="min-h-screen flex justify-center items-center">
+    <section
+      id="about"
+      className="min-h-screen flex justify-center items-center"
+    >
       <div className="wrapper px-12 ">
         {/* Header */}
         <div className="mb-12">
@@ -13,10 +16,10 @@ const AboutPage = () => {
           </div>
 
           <p className="text-muted-foreground text-lg leading-relaxed">
-            QR Workspace is a modern, web-based tool for generating customizable
-            QR codes. It focuses on simplicity, performance, and clean UI,
-            allowing users to generate and export QR codes quickly without
-            unnecessary complexity.
+            Cookie QR is a modern, open-source, web-based tool for generating
+            colorful QR codes. It focuses on simplicity, performance, and a
+            clean user interface, enabling users to create and export QR codes
+            quickly without unnecessary complexity.
           </p>
         </div>
 
@@ -53,9 +56,9 @@ const AboutPage = () => {
             <li className="flex items-start gap-3">
               <Code className="h-5 w-5 mt-1" />
               <span>
-                <strong>Next.js</strong> — Used as the core framework for routing,
-                rendering, and overall application structure, enabling a modern
-                React-based architecture.
+                <strong>Next.js</strong> — Used as the core framework for
+                routing, rendering, and overall application structure, enabling
+                a modern React-based architecture.
               </span>
             </li>
 
@@ -80,8 +83,8 @@ const AboutPage = () => {
             <li className="flex items-start gap-3">
               <Zap className="h-5 w-5 mt-1" />
               <span>
-                <strong>lucide-react</strong> — Supplies a clean, consistent icon
-                set that integrates seamlessly with the design system.
+                <strong>lucide-react</strong> — Supplies a clean, consistent
+                icon set that integrates seamlessly with the design system.
               </span>
             </li>
 

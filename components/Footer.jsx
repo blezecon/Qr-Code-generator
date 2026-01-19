@@ -1,5 +1,3 @@
-"use client";
-
 import { Github } from "lucide-react";
 
 const Footer = () => {
@@ -8,7 +6,7 @@ const Footer = () => {
       <div className="wrapper px-12 py-8">
         <div className="text-center">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} QR Workspace. All rights reserved.
+            © {new Date().getFullYear()} Banana QR. Open-source under the MIT License.
           </div>
           <a
             href="https://github.com/blezecon/Qr-Code-generator"

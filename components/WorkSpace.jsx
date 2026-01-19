@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ColorPicker from "@/components/ui/colorPicker";
+import { CloudDownload } from "lucide-react";
 
 const WorkSpace = () => {
   const [text, setText] = useState("");
@@ -16,7 +17,7 @@ const WorkSpace = () => {
     if (!text) return null;
 
     const baseParams = `size=${size}&data=${encodeURIComponent(
-      text
+      text,
     )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
 
     return {
@@ -62,7 +63,10 @@ const WorkSpace = () => {
   const [w, h] = size.split("x").map(Number);
 
   return (
-    <section id="workspace" className="min-h-screen flex justify-center items-center">
+    <section
+      id="workspace"
+      className="min-h-screen flex justify-center items-center"
+    >
       <div className="wrapper px-12 ">
         {/* Header */}
         <div className="mb-10">
@@ -111,16 +115,8 @@ const WorkSpace = () => {
 
             {/* Colors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <ColorPicker
-                label="Foreground"
-                value={fg}
-                onChange={setFg}
-              />
-              <ColorPicker
-                label="Background"
-                value={bg}
-                onChange={setBg}
-              />
+              <ColorPicker label="Foreground" value={fg} onChange={setFg} />
+              <ColorPicker label="Background" value={bg} onChange={setBg} />
             </div>
           </section>
 
@@ -145,12 +141,9 @@ const WorkSpace = () => {
             </div>
 
             <div className="mt-4 flex gap-3">
-              <Button
-                onClick={downloadPNG}
-                disabled={!urls}
-                className="flex-1"
-              >
+              <Button onClick={downloadPNG} disabled={!urls} className="flex-1">
                 PNG
+                <CloudDownload className="h-4 w-4" />
               </Button>
 
               <Button
@@ -160,6 +153,7 @@ const WorkSpace = () => {
                 className="flex-1"
               >
                 SVG
+                <CloudDownload className="h-4 w-4" />
               </Button>
             </div>
           </section>

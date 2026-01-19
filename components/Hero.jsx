@@ -12,8 +12,8 @@ const Hero = () => {
       <div className="wrapper w-full pt-32 sm:pt-36 lg:pt-40 px-12">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Hi, I&apos;m Blezecon.
-            <br className="hidden sm:block" />I Build Simple, Useful Tools
+            A Simple QR Generator for 
+            <br className="hidden sm:block" />People Who Hate Bloat
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
