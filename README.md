@@ -15,7 +15,7 @@ A modern, open-source, web-based tool for generating customizable QR codes. Cook
 
 - **QR Code Generation** – Generate QR codes from any text or URL using the goQR public API
 - **Color Customization** – Customize foreground and background colors with an intuitive color picker
-- **Size Selection** – Choose from multiple QR code sizes (128×128, 256×256, 512×512, and more)
+- **Size Selection** – Choose from multiple QR code sizes (128×128, 256×256, 512×512)
 - **Multiple Export Formats** – Download QR codes as PNG or SVG
 - **Client-Side Processing** – All interactions happen in your browser; no server uploads
 - **Privacy-Friendly** – No user accounts, no tracking, no data collection
