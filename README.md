@@ -11,7 +11,7 @@ A modern, open-source, web-based tool for generating customizable QR codes. Cook
 - **Client-Side Processing** – All interactions happen in your browser; no server uploads
 - **Privacy-Friendly** – No user accounts, no tracking, no data collection
 - **Open-Source** – MIT License; free to use, modify, and distribute
-
+- **Hosting-Ready** – Works seamlessly in production and hosted environments without additional configuration
 ## Tech Stack
 
 - **[Next.js](https://nextjs.org/)** – React framework with App Router for building the web application
@@ -109,3 +109,4 @@ cookie-qr/
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
+**[Old Cookie QR website](https://cookieqr.xo.je/)** – Version 1
