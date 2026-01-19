@@ -9,8 +9,8 @@ import { CloudDownload } from "lucide-react";
 const WorkSpace = () => {
   const [text, setText] = useState("");
   const [size, setSize] = useState("256x256");
-  const [fg, setFg] = useState("#ff00ff");
-  const [bg, setBg] = useState("#00aaff");
+  const [fg, setFg] = useState("#000000");
+  const [bg, setBg] = useState("#ffffff");
 
   // 🔑 Always derive URLs from CURRENT state
   const buildQrUrls = () => {
