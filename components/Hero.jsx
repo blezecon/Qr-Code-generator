@@ -17,8 +17,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
-            This QR Code Generator is a lightweight, privacy-friendly project
-            built to create, scan, and share QR codes instantly. No accounts, no
+            Cookie QR is a lightweight, privacy-friendly project
+            built to create, scan, and download colorful QR codes instantly. No accounts, no
             tracking, no unnecessary complexity—just fast tools that work
             directly in your browser.
           </p>
