@@ -2,7 +2,7 @@ import { Code, Layers, Palette, Zap, Info } from "lucide-react";
 
 const AboutPage = () => {
   return (
-    <section className="min-h-screen flex justify-center items-start pt-24">
+    <section id="about" className="min-h-screen flex justify-center items-center">
       <div className="wrapper px-12 ">
         {/* Header */}
         <div className="mb-12">

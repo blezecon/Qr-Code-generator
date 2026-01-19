@@ -62,7 +62,7 @@ const WorkSpace = () => {
   const [w, h] = size.split("x").map(Number);
 
   return (
-    <section className="min-h-screen flex justify-center items-center">
+    <section id="workspace" className="min-h-screen flex justify-center items-center">
       <div className="wrapper px-12 ">
         {/* Header */}
         <div className="mb-10">

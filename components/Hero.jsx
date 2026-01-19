@@ -1,10 +1,13 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight, Compass, Github } from "lucide-react";
+import { scrollTo } from "@/lib/useLenis";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-start justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-start justify-center overflow-hidden">
       {/* Top offset to account for navbar + visual balance */}
       <div className="wrapper w-full pt-32 sm:pt-36 lg:pt-40 px-12">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
@@ -21,11 +24,9 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="px-8 text-base shadow-lg">
-              <Link href="/submit">
-                <Compass className="size-5" />
-                Workspace
-              </Link>
+            <Button size="lg" className="px-8 text-base shadow-lg" onClick={() => scrollTo('#workspace')}>
+              <Compass className="size-5" />
+              Workspace
             </Button>
 
             <Button
