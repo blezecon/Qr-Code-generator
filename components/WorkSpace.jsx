@@ -21,8 +21,8 @@ const WorkSpace = () => {
     )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
 
     return {
-      png: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}`,
-      svg: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&format=svg`,
+      png: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&ecc=Q&qzone=4`,
+      svg: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&format=svg&ecc=Q&qzone=4`,
     };
   };
 
@@ -141,7 +141,11 @@ const WorkSpace = () => {
             </div>
 
             <div className="mt-4 flex gap-3">
-              <Button onClick={downloadPNG} disabled={!urls} className="flex-1">
+              <Button
+                onClick={downloadPNG}
+                disabled={!urls}
+                className="flex-1 cursor-pointer"
+              >
                 PNG
                 <CloudDownload className="h-4 w-4" />
               </Button>
@@ -150,7 +154,7 @@ const WorkSpace = () => {
                 onClick={downloadSVG}
                 variant="secondary"
                 disabled={!urls}
-                className="flex-1"
+                className="flex-1 cursor-pointer"
               >
                 SVG
                 <CloudDownload className="h-4 w-4" />
