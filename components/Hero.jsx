@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-start justify-center overflow-hidden">
       {/* Top offset to account for navbar + visual balance */}
-      <div className="wrapper w-full pt-32 sm:pt-36 lg:pt-40 px-12">
+      <div className="wrapper w-full pt-20 sm:pt-24 lg:pt-28 px-12">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
             A Simple QR Generator for 
