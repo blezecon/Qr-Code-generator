@@ -79,7 +79,6 @@ export async function POST(req) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Upload error:", error);
     return new Response(
       JSON.stringify({
         error: "Upload failed",

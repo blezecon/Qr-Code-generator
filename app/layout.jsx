@@ -146,7 +146,6 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    // dont use light theme light theme is broken
     <html lang="en" className="dark">
       <head>
         <script
