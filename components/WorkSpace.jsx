@@ -7,9 +7,10 @@ import ColorPicker from "@/components/ui/colorPicker";
 import { CloudDownload, Upload, AlertCircle, Loader2 } from "lucide-react";
 
 const WorkSpace = () => {
+  const PREVIEW_SIZE = "250x250"; // Fixed preview size
   const [mode, setMode] = useState("text"); // "text" or "image"
   const [text, setText] = useState("");
-  const [size, setSize] = useState("256x256");
+  const [downloadSize, setDownloadSize] = useState("1000x1000"); // Download resolution
   const [fg, setFg] = useState("#000000");
   const [bg, setBg] = useState("#ffffff");
 
@@ -24,7 +25,7 @@ const WorkSpace = () => {
   const buildQrUrls = () => {
     if (!text) return null;
 
-    const baseParams = `size=${size}&data=${encodeURIComponent(
+    const baseParams = `size=${downloadSize}&data=${encodeURIComponent(
       text,
     )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
 
@@ -32,6 +33,17 @@ const WorkSpace = () => {
       png: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&ecc=Q&qzone=4`,
       svg: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&format=svg&ecc=Q&qzone=4`,
     };
+  };
+
+  // Preview URL - always uses fixed 250x250 size
+  const buildPreviewUrl = () => {
+    if (!text) return null;
+
+    const baseParams = `size=${PREVIEW_SIZE}&data=${encodeURIComponent(
+      text,
+    )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
+
+    return `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&ecc=Q&qzone=4`;
   };
 
   const downloadPNG = async () => {
@@ -44,7 +56,7 @@ const WorkSpace = () => {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = `qr-${size}.png`;
+    a.download = `qr-${downloadSize}.png`;
     a.click();
 
     URL.revokeObjectURL(url);
@@ -61,7 +73,7 @@ const WorkSpace = () => {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = `qr-${size}.svg`;
+    a.download = `qr-${downloadSize}.svg`;
     a.click();
 
     URL.revokeObjectURL(url);
@@ -144,12 +156,12 @@ const WorkSpace = () => {
     setErrorMessage("");
   };
 
-  // Build QR URLs based on mode
+  // Build QR URLs based on mode (for download)
   const buildQrUrlsForMode = () => {
     if (mode === "text") {
       return buildQrUrls();
     } else if (mode === "image" && uploadedImage) {
-      const baseParams = `size=${size}&data=${encodeURIComponent(
+      const baseParams = `size=${downloadSize}&data=${encodeURIComponent(
         uploadedImage.url,
       )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
 
@@ -161,8 +173,22 @@ const WorkSpace = () => {
     return null;
   };
 
+  // Build preview URL based on mode (always 250x250)
+  const buildPreviewUrlForMode = () => {
+    if (mode === "text") {
+      return buildPreviewUrl();
+    } else if (mode === "image" && uploadedImage) {
+      const baseParams = `size=${PREVIEW_SIZE}&data=${encodeURIComponent(
+        uploadedImage.url,
+      )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
+
+      return `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&ecc=Q&qzone=4`;
+    }
+    return null;
+  };
+
   const urls = buildQrUrlsForMode();
-  const [w, h] = size.split("x").map(Number);
+  const previewUrl = buildPreviewUrlForMode();
 
   return (
     <section
@@ -171,11 +197,11 @@ const WorkSpace = () => {
     >
       <div className="wrapper px-12 ">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-10 ">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             WorkSpace
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg ">
             Design and export high-quality QR codes for various use cases with
             ease.
           </p>
@@ -223,19 +249,21 @@ const WorkSpace = () => {
                   />
                 </div>
 
-                {/* Resolution */}
+                {/* Download Resolution */}
                 <div>
                   <label className="block mb-2 text-xs text-muted-foreground">
-                    Resolution
+                    Download Resolution (Preview: 250×250)
                   </label>
                   <select
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
+                    value={downloadSize}
+                    onChange={(e) => setDownloadSize(e.target.value)}
                     className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                   >
-                    <option value="128x128">128 x 128 px</option>
-                    <option value="256x256">256 x 256 px</option>
-                    <option value="512x512">512 x 512 px</option>
+                    <option value="150x150">150 x 150 px</option>
+                    <option value="250x250">250 x 250 px</option>
+                    <option value="500x500">500 x 500 px</option>
+                    <option value="750x750">750 x 750 px</option>
+                    <option value="1000x1000">1000 x 1000 px</option>
                   </select>
                 </div>
 
@@ -285,19 +313,21 @@ const WorkSpace = () => {
                   </label>
                 </div>
 
-                {/* Resolution */}
+                {/* Download Resolution */}
                 <div>
                   <label className="block mb-2 text-xs text-muted-foreground">
-                    Resolution
+                    Download Resolution (Preview: 250×250)
                   </label>
                   <select
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
+                    value={downloadSize}
+                    onChange={(e) => setDownloadSize(e.target.value)}
                     className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                   >
-                    <option value="128x128">128 x 128 px</option>
-                    <option value="256x256">256 x 256 px</option>
-                    <option value="512x512">512 x 512 px</option>
+                    <option value="150x150">150 x 150 px</option>
+                    <option value="250x250">250 x 250 px</option>
+                    <option value="500x500">500 x 500 px</option>
+                    <option value="750x750">750 x 750 px</option>
+                    <option value="1000x1000">1000 x 1000 px</option>
                   </select>
                 </div>
 
@@ -332,12 +362,12 @@ const WorkSpace = () => {
             {mode === "text" && (
               <>
                 <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed bg-background p-6">
-                  {urls ? (
+                  {previewUrl ? (
                     <Image
-                      src={urls.png}
-                      alt="QR Code"
-                      width={w}
-                      height={h}
+                      src={previewUrl}
+                      alt="Generated QR code from text or URL"
+                      width={250}
+                      height={250}
                       unoptimized
                     />
                   ) : (
@@ -373,12 +403,12 @@ const WorkSpace = () => {
             {mode === "image" && (
               <>
                 <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed bg-background p-6">
-                  {urls ? (
+                  {previewUrl ? (
                     <Image
-                      src={urls.png}
-                      alt="QR Code"
-                      width={w}
-                      height={h}
+                      src={previewUrl}
+                      alt="Generated QR code from uploaded image (up to 30MB)"
+                      width={250}
+                      height={250}
                       unoptimized
                     />
                   ) : (

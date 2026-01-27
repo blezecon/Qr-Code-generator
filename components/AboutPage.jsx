@@ -8,18 +8,18 @@ const AboutPage = () => {
     >
       <div className="wrapper px-12 ">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-12 ">
           <div className="flex items-center gap-2 mb-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               About
             </h1>
           </div>
 
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Cookie QR is a modern, open-source, web-based tool for generating
-            colorful QR codes. It focuses on simplicity, performance, and a
-            clean user interface, enabling users to create and export QR codes
-            quickly without unnecessary complexity.
+          <p className="text-muted-foreground text-lg leading-relaxed ">
+            Cookie QR is a modern, open-source, web-based tool for generating 
+            custom QR codes from images and text. Convert images up to 30MB to QR codes 
+            or create text-based QR codes for URLs and links. Export as PNG or SVG formats 
+            with customizable colors—all without creating an account.
           </p>
         </div>
 
@@ -27,15 +27,14 @@ const AboutPage = () => {
         <div className="mb-12 space-y-4">
           <h2 className="text-xl font-semibold flex items-center gap-2">
             <Zap className="h-5 w-5 text-muted-foreground" />
-            What is QR Workspace?
+            What Can You Do with Cookie QR?
           </h2>
 
           <p className="text-muted-foreground leading-relaxed">
-            QR Workspace is designed as a lightweight QR code generator where
-            users can control content, resolution, foreground and background
-            colors, and export the result in PNG or SVG formats. The goal is to
-            provide a fast and distraction-free experience with a polished,
-            dashboard-style interface.
+            Cookie QR lets you convert images to QR codes (supporting files up to 30MB), 
+            transform text and URLs into scannable QR codes, customize colors for branding, 
+            and download in multiple formats (PNG for digital use, SVG for print). 
+            All processing happens in your browser for maximum privacy and speed.
           </p>
 
           <p className="text-muted-foreground leading-relaxed">

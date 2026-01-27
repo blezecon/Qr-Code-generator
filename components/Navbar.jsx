@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Cookie,
-  Home,
-  Compass,
-  Info,
-  Menu,
-  X,
-} from "lucide-react";
+import { Cookie, Home, Compass, Info, HelpCircle, Menu, X } from "lucide-react";
 import { scrollTo } from "@/lib/useLenis";
 
 const Navbar = () => {
