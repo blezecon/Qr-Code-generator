@@ -1,21 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Cookie,
-  Home,
-  Compass,
-  Info,
-  Menu,
-  X,
-} from "lucide-react";
+import { Cookie, Home, Compass, Info, Menu, X } from "lucide-react";
 import { scrollTo } from "@/lib/useLenis";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const handleScroll = (id) => {
-    scrollTo(id);
+    // Apply negative offset for #home to account for navbar height (64px)
+    const offset = id === "#home" ? -64 : 0;
+    scrollTo(id, { offset });
     setOpen(false); // close menu after click
   };
 

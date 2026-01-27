@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="wrapper px-12 py-8">
         <div className="text-center">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Banana QR. Open-source under the MIT License.
+            © {new Date().getFullYear()} Cookie QR. Open-source under the MIT License.
           </div>
           <a
             href="https://github.com/blezecon/Qr-Code-generator"
