@@ -9,6 +9,11 @@ const nextConfig = {
         hostname: "api.qrserver.com",
         pathname: "/v1/create-qr-code/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+        pathname: "/**",
+      },
     ],
   },
 };
