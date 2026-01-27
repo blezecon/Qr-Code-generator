@@ -144,7 +144,24 @@ const WorkSpace = () => {
     setErrorMessage("");
   };
 
-  const urls = buildQrUrls();
+  // Build QR URLs based on mode
+  const buildQrUrlsForMode = () => {
+    if (mode === "text") {
+      return buildQrUrls();
+    } else if (mode === "image" && uploadedImage) {
+      const baseParams = `size=${size}&data=${encodeURIComponent(
+        uploadedImage.url,
+      )}&color=${fg.replace("#", "")}&bgcolor=${bg.replace("#", "")}`;
+
+      return {
+        png: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&ecc=Q&qzone=4`,
+        svg: `https://api.qrserver.com/v1/create-qr-code/?${baseParams}&format=svg&ecc=Q&qzone=4`,
+      };
+    }
+    return null;
+  };
+
+  const urls = buildQrUrlsForMode();
   const [w, h] = size.split("x").map(Number);
 
   return (
@@ -167,17 +184,14 @@ const WorkSpace = () => {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* ================= CONTROLS ================= */}
           <section className="rounded-xl backdrop-blur supports-backdrop-filter:bg-black/20 p-6 shadow-lg space-y-6">
-            <h2 className="text-sm font-semibold">Controls Panel</h2>
-
-            {/* Mode Selector */}
-            <div>
-              <label className="block mb-2 text-xs text-muted-foreground">
-                Mode
-              </label>
-              <div className="grid grid-cols-2 gap-2">
+            {/* Header with Mode Selector */}
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-semibold">Controls Panel</h2>
+              <div className="flex gap-2">
                 <Button
                   onClick={() => setMode("text")}
                   variant={mode === "text" ? "default" : "secondary"}
+                  size="sm"
                   className="cursor-pointer"
                 >
                   Text
@@ -185,6 +199,7 @@ const WorkSpace = () => {
                 <Button
                   onClick={() => setMode("image")}
                   variant={mode === "image" ? "default" : "secondary"}
+                  size="sm"
                   className="cursor-pointer"
                 >
                   Image
@@ -235,90 +250,66 @@ const WorkSpace = () => {
             {/* Image Mode Controls */}
             {mode === "image" && (
               <>
-                {uploadState === "idle" || uploadState === "error" ? (
-                  <div>
-                    <label className="block mb-2 text-xs text-muted-foreground">
-                      Upload Image (max 30MB)
-                    </label>
-                    <label>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileSelect}
-                        disabled={uploadState === "loading"}
-                        className="hidden"
-                      />
-                      <Button
-                        asChild
-                        className="w-full cursor-pointer"
-                        disabled={uploadState === "loading"}
-                      >
-                        <span>
-                          <Upload className="h-4 w-4 mr-2" />
-                          Select Image
-                        </span>
-                      </Button>
-                    </label>
-                  </div>
-                ) : null}
-
-                {uploadState === "loading" && (
-                  <div className="flex flex-col items-center gap-3 p-8">
-                    <Loader2 className="h-10 w-10 animate-spin text-foreground" />
-                    <p className="text-sm font-medium">Uploading...</p>
-                  </div>
-                )}
-
-                {uploadState === "success" && uploadedImage && (
-                  <div className="space-y-4">
-                    <div className="rounded-lg bg-green-500/10 p-4">
-                      <p className="text-sm font-medium text-green-700">
-                        Upload successful!
-                      </p>
-                      <p className="text-xs text-green-600 mt-1">
-                        Auto-deletes in 180 days
-                      </p>
-                    </div>
-
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Size:</span>
-                        <span className="font-medium">
-                          {(uploadedImage.size / (1024 * 1024)).toFixed(2)} MB
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Uploaded:</span>
-                        <span className="font-medium">
-                          {uploadedImage.uploadedAt.toLocaleString()}
-                        </span>
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-xs text-muted-foreground">
-                          Image URL:
-                        </label>
-                        <input
-                          type="text"
-                          value={uploadedImage.url}
-                          readOnly
-                          className="w-full rounded-md border bg-background px-3 py-2 text-xs font-mono"
-                        />
-                      </div>
-                    </div>
-
+                {/* Upload Image */}
+                <div>
+                  <label className="block mb-2 text-xs text-muted-foreground">
+                    Upload Image (max 30MB)
+                  </label>
+                  <label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileSelect}
+                      disabled={uploadState === "loading"}
+                      className="hidden"
+                    />
                     <Button
-                      onClick={resetUpload}
-                      variant="secondary"
+                      asChild
                       className="w-full cursor-pointer"
+                      disabled={uploadState === "loading"}
                     >
-                      Upload Another
+                      <span>
+                        {uploadState === "loading" ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Uploading...
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="h-4 w-4 mr-2" />
+                            {uploadState === "success" ? "Upload Another" : "Select Image"}
+                          </>
+                        )}
+                      </span>
                     </Button>
-                  </div>
-                )}
+                  </label>
+                </div>
 
+                {/* Resolution */}
+                <div>
+                  <label className="block mb-2 text-xs text-muted-foreground">
+                    Resolution
+                  </label>
+                  <select
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="128x128">128 x 128 px</option>
+                    <option value="256x256">256 x 256 px</option>
+                    <option value="512x512">512 x 512 px</option>
+                  </select>
+                </div>
+
+                {/* Colors */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <ColorPicker label="Foreground" value={fg} onChange={setFg} />
+                  <ColorPicker label="Background" value={bg} onChange={setBg} />
+                </div>
+
+                {/* Error State */}
                 {uploadState === "error" && errorMessage && (
-                  <div className="mt-4 flex items-start gap-3 rounded-lg bg-destructive/10 p-4">
+                  <div className="flex items-start gap-3 rounded-lg bg-destructive/10 p-4">
                     <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-destructive" />
                     <div className="flex-1">
                       <p className="text-sm font-medium text-destructive">
@@ -380,11 +371,44 @@ const WorkSpace = () => {
             )}
 
             {mode === "image" && (
-              <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed bg-background p-6">
-                <span className="text-xs text-muted-foreground">
-                  No preview for image uploads
-                </span>
-              </div>
+              <>
+                <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed bg-background p-6">
+                  {urls ? (
+                    <Image
+                      src={urls.png}
+                      alt="QR Code"
+                      width={w}
+                      height={h}
+                      unoptimized
+                    />
+                  ) : (
+                    <span className="text-xs text-muted-foreground">
+                      Upload an image to generate QR
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-4 flex gap-3">
+                  <Button
+                    onClick={downloadPNG}
+                    disabled={!urls}
+                    className="flex-1 cursor-pointer"
+                  >
+                    PNG
+                    <CloudDownload className="h-4 w-4" />
+                  </Button>
+
+                  <Button
+                    onClick={downloadSVG}
+                    variant="secondary"
+                    disabled={!urls}
+                    className="flex-1 cursor-pointer"
+                  >
+                    SVG
+                    <CloudDownload className="h-4 w-4" />
+                  </Button>
+                </div>
+              </>
             )}
           </section>
         </div>
